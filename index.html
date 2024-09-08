@@ -218,7 +218,7 @@
 
         // 서버에서 예약된 시간 정보를 받아오는 함수
         function fetchReservedTimes() {
-            fetch("https://unyuprint.netlify.app/")  // 서버에서 예약된 시간을 받아오는 요청
+            fetch("https://unyuprint.netlify.app/get_reserved_times")  // 서버에서 예약된 시간을 받아오는 요청
                 .then(response => response.json())
                 .then(data => {
                     reservedTimes = data.reservedTimes;  // 예약된 시간 목록을 업데이트
@@ -338,7 +338,7 @@
                 formData.append("file", selectedFile);  // 파일이 선택된 경우 파일도 전송
             }
 
-            fetch("http://127.0.0.1:5000/save_time", {  // 서버 URL을 절대 경로로 명시
+            fetch("https://unyuprint.netlify.app/save_time", {  // 배포된 서버의 API 엔드포인트 사용
                 method: "POST",
                 body: formData  // 파일과 데이터를 FormData로 전송
             })
