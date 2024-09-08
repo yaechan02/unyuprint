@@ -171,7 +171,7 @@
 
     <div class="container">
         <!-- 로고 이미지와 타이틀 텍스트를 한 줄에 배치 -->
-        <image src = "/static/images/unyu_logo.png" class = "logo"></image>
+        <image src="/static/images/unyu_logo.png" class="logo"></image>
         <h1>운유고등학교 인쇄 예약하기</h1>
 
         <!-- 내일 날짜를 표시할 부분 (박스 스타일 적용) -->
@@ -292,7 +292,7 @@
             });
         });
 
-        // 파일 업로드 버튼 클릭 시 파일 업로드 필드 표시
+        // 파일 업로드 버튼 클릭 시 파일 업로드 필드 표시 및 선택 상태 유지
         const uploadFileBtn = document.getElementById("upload-file-btn");
         const bringUsbBtn = document.getElementById("bring-usb-btn");
         const fileUploadContainer = document.getElementById("file-upload-container");
@@ -300,11 +300,19 @@
         uploadFileBtn.addEventListener("click", function() {
             uploadMethod = "파일 업로드";  // '파일 업로드' 선택
             fileUploadContainer.style.display = "block";  // 파일 업로드 필드 표시
+
+            // 버튼 상태 변경
+            uploadFileBtn.classList.add("selected");  // '파일 업로드' 버튼에 선택된 클래스 추가
+            bringUsbBtn.classList.remove("selected");  // 'USB 가져갈게요' 버튼에서 선택된 클래스 제거
         });
 
         bringUsbBtn.addEventListener("click", function() {
             uploadMethod = "USB 가져갈게요";  // 'USB 가져갈게요' 선택
             fileUploadContainer.style.display = "none";  // 파일 업로드 필드 숨김
+
+            // 버튼 상태 변경
+            bringUsbBtn.classList.add("selected");  // 'USB 가져갈게요' 버튼에 선택된 클래스 추가
+            uploadFileBtn.classList.remove("selected");  // '파일 업로드' 버튼에서 선택된 클래스 제거
         });
 
         // 선택한 시간을 텍스트와 함께 서버로 전송하는 함수
