@@ -218,7 +218,7 @@
 
         // 서버에서 예약된 시간 정보를 받아오는 함수
         function fetchReservedTimes() {
-            fetch("http://127.0.0.1:5000/get_reserved_times")  // 서버에서 예약된 시간을 받아오는 요청
+            fetch("https://unyuprint.netlify.app/")  // 서버에서 예약된 시간을 받아오는 요청
                 .then(response => response.json())
                 .then(data => {
                     reservedTimes = data.reservedTimes;  // 예약된 시간 목록을 업데이트
